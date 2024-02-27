@@ -1,23 +1,22 @@
 const express = require('express');
 const router = express.Router();
 const User = require("../models/user");
+
 router.post('/register/upload/moreinfo', async (req, res) => {
-    const {about, education, language, height, zodiac, smoking, drink, training, pet, socialMedia } = req.body;
-    try {
-        await User.findByIdAndUpdate(req.session.userId, {
-            $set: {
-                about: about,
-                education: education,
-                language: language,
-                height: height,
-                zodiac: zodiac,
-                smokingHabits: smoking,
-                drinkingHabits: drink,
-                trainingFrequency: training,
-                petPreference: pet,
-                socialMediaLinks: { Instagram: socialMedia }
+    const updateData = {};
+    const fields = ['about', 'education', 'language', 'height', 'zodiac', 'smoking', 'drink', 'training', 'pet', 'socialMedia'];
+    fields.forEach(field => {
+        if (req.body[field] !== undefined) {
+            if (field === 'socialMedia') {
+                updateData['socialMedia'] = { Instagram: req.body[field] };
+            } else {
+                updateData[field] = req.body[field];
             }
-        }, { new: true, upsert: true  });
+        }
+    });
+
+    try {
+        await User.findByIdAndUpdate(req.session.userId, { $set: updateData }, { new: true, upsert: true });
 
         res.redirect('/search');
     } catch (error) {

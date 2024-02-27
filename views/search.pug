@@ -1,0 +1,68 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        title Search | Yama
+        link(rel="stylesheet", href="/css/style.css")
+    body
+        header.header-nav
+            img.logo(src="/pictures/logo.png", alt="Yama Logo")
+            nav.menu
+                 a.menu-item(href="/home") Home
+                 a.menu-item(href="/logout") Log Out
+
+        .hero-log
+            p Find Your Perfect Match
+
+        main.search-container
+            if users.length
+                .carousel-container
+                    each user, index in users
+                        .user-container(data-index=index)
+                            p HERE WILL BE PHOTOS
+                            h3 #{user.name}
+                            if user.country
+                                p Country: #{user.country}
+                            if user.city
+                                p City: #{user.city}
+                            if user.interests && user.interests.length
+                                p Interests: #{user.interests.join(', ')}
+                            if user.about
+                                p About me: #{user.about}
+                            if user.education
+                                p Education: #{user.education}
+                            if user.languages
+                                p Languages: #{user.languages}
+                            if user.height
+                                p Height: #{user.height}
+                            if user.zodiacSign
+                                p Zodiac Sign: #{user.zodiacSign}
+                            if user.smoker
+                                p Smoker: #{user.smoker}
+                            if user.drinker
+                                p Drinker: #{user.drinker}
+                            if user.sports
+                                p Sports: #{user.sports}
+                            if user.pets
+                                p Pets: #{user.pets}
+                            if user.socialMedia && user.socialMedia.length
+                                p Social Media:
+                                    each link in user.socialMedia
+                                        a(href=`${link}`) #{link}
+                            .buttons-container
+                                button.dislike-button(data-user-id=user._id) Dislike
+                                button.like-button(data-user-id=user._id) Like
+
+            else
+                p No users found.
+
+        footer
+            .footer-content
+                .links
+                    a(href="/info").footer-link Information
+                    a(href="/social").footer-link Social Media
+            .copy
+                p &copy; 2024 Yama. All rights reserved.
+
+        script(src="/scripts/clicking.js")

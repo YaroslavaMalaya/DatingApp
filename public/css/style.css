@@ -191,7 +191,7 @@ select {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 100px auto 50px;
+    margin: 100px auto 400px;
     position: relative;
     z-index: 2;
 }
@@ -288,5 +288,89 @@ input:focus {
     border-color: #17173f;
 }
 
+.hero-log{
+    color: #fff;
+    background-color: transparent;
+    text-align: center;
+    padding: 50px;
+    margin-top: 60px;
+}
+
+.hero-log p{
+    font-size: 40px;
+}
+
+.like-button {
+    background-color: #ff0084;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.dislike-button {
+    background-color: #002983;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.buttons-container {
+    margin-right: 20px;
+    margin-left: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
 
 
+.search-container {
+    min-height: 500px;
+    background-color: #10101c;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 100px;
+}
+
+.carousel-container {
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+    position: relative;
+}
+
+.user-container {
+    background-color: #ffffff;
+    padding: 20px 20px 20px 20px;
+    height: 700px;
+    width: 400px;
+    border-radius: 30px;
+    transform: scale(0.8);
+    transition: transform 0.5s ease;
+    box-shadow: 0 7px 15px rgba(255, 255, 255, 0.53);
+    margin: 0 10px;
+}
+
+.user-container.active {
+    transform: scale(1);
+}
+
+.user-container.left, .user-container.right {
+    transform: scale(0.6);
+}

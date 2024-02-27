@@ -22,10 +22,11 @@ const userSchema = new mongoose.Schema({
     drinker: { type: String },
     sports: { type: String },
     pets: { type: String },
-    socialMedia: [String],
-    waiting: [{ type: ObjectId,}],
-    matched: [{ type: ObjectId,}],
-    notmatched: [{ type: ObjectId,}],
+    socialMedia: {
+        Instagram: { type: String, default: '' }},
+    waiting: [{ type: ObjectId }],
+    matched: [{ type: ObjectId }],
+    dontdisplay: [{ type: ObjectId }],
 });
 
 module.exports = mongoose.model('User', userSchema);
