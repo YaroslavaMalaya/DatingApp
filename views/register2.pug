@@ -1,0 +1,51 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        title Register - Upload Photos | Yama
+        link(rel="stylesheet", href="/css/style.css")
+    body
+        header.header-nav
+            img.logo(src="/images/logo.png", alt="Yama Logo")
+            nav.menu
+                a.menu-item(href="/home") Home
+                a.menu-item(href="/login") Log In
+
+        main.register-container
+            h2 Upload Your Photos And Add More Information
+            if query.error
+                .error-message #{query.error}
+            form.register-form(action="/register/upload" method="POST")
+                .form-group
+                    label(for="country") Country:
+                    select#country(name="country", required=true)
+                        option(value="") Select Country...
+                .form-group
+                    label(for="city") City:
+                    select#city(name="city", required=true)
+                        option(value="") Select City...
+                .interests-form-group
+                    label Choose interests (mo more then 6):
+                    each interest in interests
+                        button.button(type="button" data-interest=interest) #{interest}
+                .form-group
+                    label(for="userPhotos") Choose photo to upload :
+                    input#userPhotos(type="file", name="userPhoto", required=true)
+                .form-group
+                    button.button(type="submit") Next
+
+                input#selectedInterests(type="hidden" name="interests")
+
+        footer
+            .footer-contenta
+                .links
+                    a(href="/info").footer-link Information
+                    a(href="/social").footer-link Social Media
+
+            .copy
+                p &copy; 2024 Yama. All rights reserved.
+
+        script(src='/scripts/datacountry.js')
+        script(src='/scripts/interests.js')
+

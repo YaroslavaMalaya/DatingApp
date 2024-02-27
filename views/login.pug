@@ -1,0 +1,36 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        title Login | Yama
+        link(rel="stylesheet" href="/css/style.css")
+    body
+        header.header-nav
+            img.logo(src="/images/logo.png", alt="Yama Logo")
+            nav.menu
+                a.menu-item(href="/home") Home
+                a.menu-item(href="/register") Sign Up
+
+        main.login-container
+            h1 Login
+            if query && query.error
+                .error-message #{query.error}
+            form.login-form(method="POST", action="/login")
+                .form-group
+                    label(for="username") Username or Email
+                    input#username(type="text", name="username", required=true)
+                .form-group
+                    label(for="password") Password
+                    input#password(type="password", name="password", required=true)
+                .form-group
+                    button(type="submit").button Login
+
+        footer
+            .footer-content
+                .links
+                    a(href="/info").footer-link Information
+                    a(href="/social").footer-link Social Media
+            .copy
+                p &copy; 2024 Yama. All rights reserved.
+

@@ -1,0 +1,108 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        title Register - More Info | Yama
+        link(rel="stylesheet", href="/css/style.css")
+    body
+        header.header-nav
+            img.logo(src="/images/logo.png", alt="Yama Logo")
+            nav.menu
+                a.menu-item(href="/home") Home
+                a.menu-item(href="/login") Log In
+
+        main.register-container
+            h2 Add More About Yourself
+            if query.error
+                .error-message #{query.error}
+            form.register-form(action="/register/upload/moreinfo" method="POST")
+                .form-group
+                    label(for="about") About Me:
+                    textarea#about(name="about" placeholder="Tell us about yourself..." maxlength="500" rows="5")
+                .form-group
+                    label(for="education") Education:
+                    input#education(type="text" name="education" placeholder="Your education background")
+                .form-group
+                    label(for="language") Language:
+                    select#language(name="language")
+                        option(value="") Select Language...
+                .form-group
+                    label(for="height") Height (cm):
+                    input#height(type="number" name="height" placeholder="Your height in cm")
+                .form-group
+                    label(for="zodiac") Zodiac Sign:
+                    select#zodiac(name="zodiac")
+                        option(value="") Select Zodiac Sign...
+                        option(value="aries") Aries
+                        option(value="taurus") Taurus
+                        option(value="gemini") Gemini
+                        option(value="cancer") Cancer
+                        option(value="leo") Leo
+                        option(value="virgo") Virgo
+                        option(value="libra") Libra
+                        option(value="scorpio") Scorpio
+                        option(value="sagittarius") Sagittarius
+                        option(value="capricorn") Capricorn
+                        option(value="aquarius") Aquarius
+                        option(value="pisces") Pisces
+                .form-group
+                    label Smoking Habits:
+                    select#smoking(name="smoking")
+                        option(value="") Select Smoking Habit...
+                        option(value="social_smoker") Social smoker
+                        option(value="non_smoker") Non-smoker
+                        option(value="smoker_when_drinking") Smoker when drinking
+                        option(value="smoker") Smoker
+                        option(value="trying_to_quit") Trying to quit
+                .form-group
+                    label Drinking Habits:
+                    select#drink(name="drink")
+                        option(value="") Select Drinking Habit...
+                        option(value="not_for_me") Not for me
+                        option(value="newly_teetotal") Newly teetotal
+                        option(value="on_special_occasions") On special occasions
+                        option(value="most_nights") Most nights
+                        option(value="sober_curious") Sober curious
+                        option(value="socially_at_the_weekend") Socially, at the weekend
+                .form-group
+                    label Training:
+                    select#training(name="training")
+                        option(value="") Select Training Frequency...
+                        option(value="every_day") Every day
+                        option(value="often") Often
+                        option(value="sometimes") Sometimes
+                        option(value="never") Never
+                .form-group
+                    label Pets :
+                        select#pet(name="pet")
+                            option(value="") Select Pet...
+                            option(value="dog") Dog
+                            option(value="cat") Cat
+                            option(value="reptile") Reptile
+                            option(value="amphibian") Amphibian
+                            option(value="fish") Fish
+                            option(value="no_pet_but_love") Don't have, but love
+                            option(value="other") Other
+                            option(value="hamster") Hamster
+                            option(value="rabbit") Rabbit
+                            option(value="pet_free") Pet-free
+                            option(value="want_pet") Want a pet
+                            option(value="allergic") Allergic to pets
+                .form-group
+                    label(for="socialMedia") Social Media (Instagram):
+                    input#socialMedia(type="url" name="socialMedia" placeholder="Your Instagram URL")
+
+                .form-group
+                    button.button(type="submit") Submit
+
+        footer
+            .footer-content
+                .links
+                    a(href="/info").footer-link Information
+                    a(href="/social").footer-link Social Media
+
+            .copy
+                p &copy; 2024 Yama. All rights reserved.
+
+        script(src='/scripts/datalanguage.js')
