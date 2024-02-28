@@ -73,4 +73,25 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    document.querySelectorAll('.remove-chat-button').forEach(button => {
+        button.addEventListener('click', function() {
+            const userIdToRemove = this.dataset.userId;
+            fetch('/remove-match', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ userIdToRemove }),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if(data.success) {
+                        this.closest('.matched-user-container').remove();
+                    } else {
+                        console.error('Failed to remove match:', data.message);
+                    }
+                })
+                .catch(error => console.error('Error removing match:', error));
+        });
+    });
 });

@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (selectedInterests.has(interest)) {
                 selectedInterests.delete(interest);
                 this.classList.remove('selected');
-            } else if (selectedInterests.size < 8) {
+            } else if (selectedInterests.size < 7) {
                 selectedInterests.add(interest);
                 this.classList.toggle('selected');
             }

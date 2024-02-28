@@ -1,0 +1,38 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        title Chats | Yama
+        link(rel="stylesheet", href="/css/style.css")
+    body
+        header.header-nav
+            img.logo(src="/pictures/logo.png", alt="Yama Logo")
+            nav.menu
+                a.menu-item(href="/home") Home
+                a.menu-item(href="/search") Search
+                a.menu-item(href="/logout") Log Out
+
+        .hero-log
+            p Live Love Laugh
+
+        input(type='hidden', id='username', value=username)
+        input(type='hidden', id='targetUsername', value=targetUsername)
+
+        main.chat-container
+            .chat-form-container
+                ul.messages
+                form.chat-form
+                    input.chat-input(type='text' placeholder='Type a message...' name='message')
+                    button.send-button(type='submit') Send
+
+        footer
+            .footer-content
+                .links
+                    a(href="/info").footer-link Information
+                    a(href="/social").footer-link Social Media
+            .copy
+                p &copy; 2024 Yama. All rights reserved.
+
+        script(src="/socket.io/socket.io.js")
+        script(src="/scripts/chat.js")

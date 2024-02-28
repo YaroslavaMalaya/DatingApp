@@ -53,9 +53,15 @@ html(lang="en")
                             .buttons-container
                                 button.dislike-button(data-user-id=user._id) Dislike
                                 button.like-button(data-user-id=user._id) Like
-
+                .see-all-match-container
+                    a.see-all-match-button(href=`/${username}/chats`) See All Matches
             else
-                p No users found.
+                .no-found-container
+                    h1 No users found.
+                    p You can come back later and we’ll find you someone new.
+                    p Maybe you already have your perfect match?
+                    .see-all-match-container
+                        a.see-all-match-button(href=`/${username}/chats`) See All Matches
 
         footer
             .footer-content

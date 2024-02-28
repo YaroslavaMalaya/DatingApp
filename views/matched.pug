@@ -1,0 +1,48 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        title Chats | Yama
+        link(rel="stylesheet", href="/css/style.css")
+    body
+        header.header-nav
+            img.logo(src="/pictures/logo.png", alt="Yama Logo")
+            nav.menu
+                a.menu-item(href="/home") Home
+                a.menu-item(href="/logout") Log Out
+
+        .hero-log
+            p All You Need Is YAMA
+
+        main.matched-container
+            h1 Matched Users
+                if matchedUsers.length
+                    each user in matchedUsers
+                        .matched-user-container
+                            p.photo PHOTO
+                            .user-info
+                                h2 #{user.name}, #{user.age}
+                                p #{user.username}
+                            .user-actions
+                                button.remove-chat-button(data-user-id=user._id) Remove Chat
+                                a.open-chat-button(href=`/${username}/chat/${user.username}`) Open Chat
+                    .come-back-container
+                        a.see-all-match-button(href="/search") Come Back to Search
+                else
+                    .no-found-container
+                        h1 No matched users found.
+                        p Don't worry, check it later.
+                        p Let's find your perfect match together.
+                        .come-back-container
+                            a.see-all-match-button(href="/search") Come Back to Search
+
+        footer
+            .footer-content
+                .links
+                    a(href="/info").footer-link Information
+                    a(href="/social").footer-link Social Media
+            .copy
+                p &copy; 2024 Yama. All rights reserved.
+
+        script(src="/scripts/clicking.js")
