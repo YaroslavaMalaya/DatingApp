@@ -17,11 +17,16 @@ db.once('open', () => {
 
 const storage = new GridFsStorage({
     db: db,
+    options: { useUnifiedTopology: true },
     file: (req, file) => {
-        return {
-            filename: `photo_${Date.now()}_${file.originalname}`,
-            bucketName: 'photos'
-        };
+        return new Promise((resolve, reject) => {
+            const fileInfo = {
+                filename: `photo_${Date.now()}_${file.originalname}`,
+                bucketName: 'photos',
+                metadata: { userId: req.session.userId } // Add userId to metadata
+            };
+            resolve(fileInfo);
+        });
     }
 });
 

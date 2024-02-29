@@ -1,8 +1,6 @@
-const express = require('express');
 const User = require('../models/user');
-const router = express.Router();
 
-router.post('/like', async (req, res) => {
+exports.processLike = async (req, res) => {
     const userId = req.session.userId;
     const targetUserId = req.body.targetUserId;
 
@@ -23,9 +21,9 @@ router.post('/like', async (req, res) => {
         console.error('Error processing like:', error);
         res.status(500).send('An error occurred while processing the like.');
     }
-});
+};
 
-router.post('/dislike', async (req, res) => {
+exports.processDislike = async (req, res) => {
     const userId = req.session.userId;
     const targetUserId = req.body.targetUserId;
 
@@ -39,6 +37,4 @@ router.post('/dislike', async (req, res) => {
         console.error('Error processing dislike:', error);
         res.status(500).send('An error occurred while processing the dislike.');
     }
-});
-
-module.exports = router;
+};

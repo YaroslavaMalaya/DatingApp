@@ -1,8 +1,6 @@
-const express = require('express');
-const router = express.Router();
 const User = require('../models/user');
 
-router.get('/:username/chats', async (req, res) => {
+exports.getMatchedUsers = async (req, res) => {
     try {
         const currentUser = await User.findById(req.session.userId);
         if (!currentUser) {
@@ -19,6 +17,4 @@ router.get('/:username/chats', async (req, res) => {
         console.error('Error retrieving matched users:', error);
         res.status(500).send('An error occurred while fetching matched users.');
     }
-});
-
-module.exports = router;
+};

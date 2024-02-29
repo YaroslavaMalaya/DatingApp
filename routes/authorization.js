@@ -1,41 +1,20 @@
 const express = require('express');
 const router = express.Router();
-const User = require('../models/user');
-const bcrypt = require('bcryptjs');
-const passport = require('passport');
+const userController = require('../controllers/userCreateController');
+const interestsArray = require('../public/scripts/allinterests');
 
-router.post('/register', async (req, res) => {
-    try {
-        const { username, email, password, name, gender, orientation, age} = req.body;
-        const salt = await bcrypt.genSalt(10);
-        const hashedPassword = await bcrypt.hash(password, salt);
+router.post('/register', userController.register);
+router.post('/register/upload', userController.updateProfile);
+router.post('/register/upload/moreinfo', userController.updateMoreInfo);
 
-        const existingUser = await User.findOne({ $or: [{ email }, { username }] });
-        if (existingUser) {
-            return res.redirect('/login');
-        }
-
-        const user = new User({
-            username: username,
-            email: email,
-            password: hashedPassword,
-            name: name,
-            gender: gender,
-            orientation: orientation,
-            age: age,
-            waiting: [],
-            matched: [],
-            dontdisplay: []
-        });
-
-        user.dontdisplay.push(user._id);
-        await user.save();
-        req.session.userId = user._id;
-        res.redirect('/register/upload');
-    } catch (error) {
-        console.error('Registering the user failed.', error);
-        res.redirect(`/register?error=${encodeURIComponent('Registration failed. Please try again.')}`);
-    }
+router.get('/register', (req, res) => {
+    res.render('register', { title: 'Register | Yama', query: req.query });
+});
+router.get('/register/upload', (req, res) => {
+    res.render('register2', { title: 'Register - Upload Photos | Yama', interests: interestsArray, userId: req.query.userId, query: req.query});
+});
+router.get('/register/upload/moreinfo', (req, res) => {
+    res.render('register3', { title: 'Register - More Info | Yama', query: req.query, userId: req.query.userId});
 });
 
 module.exports = router;

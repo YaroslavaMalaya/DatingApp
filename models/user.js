@@ -22,8 +22,7 @@ const userSchema = new mongoose.Schema({
     drinker: { type: String },
     sports: { type: String },
     pets: { type: String },
-    socialMedia: {
-        Instagram: { type: String, default: '' }},
+    socialMedia: { Instagram: { type: String, default: '' }},
     waiting: [{ type: ObjectId }],
     matched: [{ type: ObjectId }],
     dontdisplay: [{ type: ObjectId }],

@@ -16,7 +16,7 @@ html(lang="en")
             h2 Upload Your Photos And Add More Information
             if query.error
                 .error-message #{query.error}
-            form.register-form(action="/register/upload" method="POST")
+            form.register-form(action="/register/upload" method="POST" )
                 .form-group
                     label(for="country") Country:
                     select#country(name="country", required=true)
@@ -30,8 +30,12 @@ html(lang="en")
                     each interest in interests
                         button.button(type="button" data-interest=interest) #{interest}
                 .form-group
-                    label(for="userPhotos") Choose photo to upload :
-                    input#userPhotos(type="file", name="userPhoto", required=true)
+                    label(for="userPhotos1") Choose photo to upload (at least one):
+                    input#userPhotos1(type="file", name="userPhoto1", required=true)
+                    input#userPhotos2(type="file", name="userPhoto2")
+                    input#userPhotos3(type="file", name="userPhoto3")
+                    input#userPhotos4(type="file", name="userPhoto4")
+                    input#userPhotos5(type="file", name="userPhoto5")
                 .form-group
                     button.button(type="submit") Next
 
