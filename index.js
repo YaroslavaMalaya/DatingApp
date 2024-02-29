@@ -5,6 +5,7 @@ const app = express();
 const PORT = require('./configs/port');
 require('./configs/express')(app);
 const server = require('./configs/server')(app);
+const cors = require('./middleware/corsMiddlware');
 
 // routes
 const authRoutes = require('./routes/authorization');
@@ -14,6 +15,7 @@ const homeRoutes = require('./routes/home');
 const searchRoutes = require('./routes/search');
 const chatRoutes = require('./routes/chat');
 
+app.use(cors);
 app.use(authRoutes);
 app.use(loginRoutes);
 app.use(actionsRoutes);
