@@ -1,5 +1,5 @@
 const User = require('../models/user');
-const logger = require('../configs/logging');
+const logger = require('../middleware/logging');
 
 exports.searchUsers = async (req, res) => {
     try {

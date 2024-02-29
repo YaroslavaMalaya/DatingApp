@@ -1,5 +1,5 @@
 const Message = require('../models/message');
-const logger = require('../configs/logging');
+const logger = require('../middleware/logging');
 
 module.exports = function (io) {
     io.on('connection', (socket) => {

@@ -1,5 +1,5 @@
 const User = require('../models/user');
-const logger = require('../configs/logging');
+const logger = require('../middleware/logging');
 
 exports.removeMatch = async (req, res) => {
     const { userIdToRemove } = req.body;
