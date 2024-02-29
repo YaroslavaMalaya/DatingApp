@@ -3,3 +3,4 @@
 {"level":"info","message":"User session destroyed successfully."}
 {"level":"info","message":"Registration attempt with existing username/email: danyavan/dan@gmail.com"}
 {"level":"warn","message":"Login attempt failed for non-existing user: fffffff"}
+{"level":"info","message":"New user registered: brycehall"}

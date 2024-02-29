@@ -5,14 +5,14 @@ const { GridFsStorage } = require('multer-gridfs-storage');
 
 mongoose.connect(MNGcon);
 const db = mongoose.connection;
-let gfs;
 
 db.on('error', console.error.bind(console, ' MongoDB connection error:'));
-db.once('open', () => {
-    gfs = new mongoose.mongo.GridFSBucket(db.db, {
+const gfs = db.once('open', () => {
+    const photosGrid = new mongoose.mongo.GridFSBucket(db.db, {
         bucketName: 'photos'
     });
     console.log('Connected to MongoDB');
+    return photosGrid;
 });
 
 const storage = new GridFsStorage({

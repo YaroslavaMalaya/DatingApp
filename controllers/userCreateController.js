@@ -42,8 +42,8 @@ exports.register = async (req, res) => {
 exports.updateProfile = async (req, res) => {
     const { country, city, interests } = req.body;
     let selectedInterests = interests.split(',').map(interest => interest.trim());
-    // const files = await gfs.find({ 'metadata.userId': req.session.userId }).toArray();
-    // const photosIdArray = files.map(file => file._id);
+    const files = await gfs.find({ 'metadata.userId': req.session.userId }).toArray();
+    const photosIdArray = files.map(file => file._id);
 
     try {
         await User.findByIdAndUpdate(req.session.userId, {
