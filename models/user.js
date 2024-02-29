@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema({
     gender: { type: String, required: true },
     orientation: { type: String, required: true },
     age: { type: Number, min: 18, required: true },
-    photos: [{ type: ObjectId, ref: 'Photo' }],
+    photos: [{ type: ObjectId }],
     country: { type: String },
     city: { type: String },
     interests: [String],

@@ -30,12 +30,8 @@ html(lang="en")
                     each interest in interests
                         button.button(type="button" data-interest=interest) #{interest}
                 .form-group
-                    label(for="userPhotos1") Choose photo to upload (at least one):
-                    input#userPhotos1(type="file", name="userPhoto1", required=true)
-                    input#userPhotos2(type="file", name="userPhoto2")
-                    input#userPhotos3(type="file", name="userPhoto3")
-                    input#userPhotos4(type="file", name="userPhoto4")
-                    input#userPhotos5(type="file", name="userPhoto5")
+                    label(for="userPhotos") Choose photo to upload (min - 1, max - 5):
+                    input#userPhotos(type="file", name="userPhotos", required=true)
                 .form-group
                     button.button(type="submit") Next
 

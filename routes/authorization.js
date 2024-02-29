@@ -2,9 +2,11 @@ const express = require('express');
 const router = express.Router();
 const userController = require('../controllers/userCreateController');
 const interestsArray = require('../public/scripts/allinterests');
+const { upload } = require('../mongooseConnection');
+const photosArray = upload.array('userPhotos', 5);
 
 router.post('/register', userController.register);
-router.post('/register/upload', userController.updateProfile);
+router.post('/register/upload', photosArray, userController.updateProfile);
 router.post('/register/upload/moreinfo', userController.updateMoreInfo);
 
 router.get('/register', (req, res) => {

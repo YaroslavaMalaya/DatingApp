@@ -1,9 +1,8 @@
 const bcrypt = require('bcryptjs');
 const User = require('../models/user');
-const { upload } = require('../mongooseConnection');
 const logger = require('../configs/logging');
+const { gfs } = require('../mongooseConnection');
 
-// const photosarray = upload.array('userPhoto');
 exports.register = async (req, res) => {
     try {
         const { username, email, password, name, gender, orientation, age} = req.body;
@@ -43,6 +42,8 @@ exports.register = async (req, res) => {
 exports.updateProfile = async (req, res) => {
     const { country, city, interests } = req.body;
     let selectedInterests = interests.split(',').map(interest => interest.trim());
+    // const files = await gfs.find({ 'metadata.userId': req.session.userId }).toArray();
+    // const photosIdArray = files.map(file => file._id);
 
     try {
         await User.findByIdAndUpdate(req.session.userId, {
@@ -50,7 +51,8 @@ exports.updateProfile = async (req, res) => {
                 country: country,
                 city: city,
                 interests: selectedInterests,
-            }
+            },
+            $push: { photos: { $each: photosIdArray } }
         }, { new: true, upsert: true });
 
         logger.info(`User profile updated: ${req.session.userId}`);
