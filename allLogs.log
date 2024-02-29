@@ -1,0 +1,5 @@
+{"level":"info","message":"User logged in: 65de46e044a4f7e55c3f3d97"}
+{"level":"info","message":"User 65de46e044a4f7e55c3f3d97 searched for users."}
+{"level":"info","message":"User session destroyed successfully."}
+{"level":"info","message":"Registration attempt with existing username/email: danyavan/dan@gmail.com"}
+{"level":"warn","message":"Login attempt failed for non-existing user: fffffff"}

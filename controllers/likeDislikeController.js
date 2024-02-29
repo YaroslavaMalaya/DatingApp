@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const logger = require('../configs/logging');
 
 exports.processLike = async (req, res) => {
     const userId = req.session.userId;
@@ -16,9 +17,10 @@ exports.processLike = async (req, res) => {
             await User.findByIdAndUpdate(targetUserId, { $push: { matched: userId }, $pull: { waiting: userId } });
         }
 
+        logger.info(`User ${userId} liked user ${targetUserId}`);
         res.send({ message: 'Like processed' });
     } catch (error) {
-        console.error('Error processing like:', error);
+        logger.error('Error processing like:', { error: error.toString(), userId, targetUserId });
         res.status(500).send('An error occurred while processing the like.');
     }
 };
@@ -32,9 +34,10 @@ exports.processDislike = async (req, res) => {
             $addToSet: { dontdisplay: targetUserId }
         });
 
+        logger.info(`User ${userId} disliked user ${targetUserId}`);
         res.send({ message: 'Dislike processed' });
     } catch (error) {
-        console.error('Error processing dislike:', error);
+        logger.error('Error processing dislike:', { error: error.toString(), userId, targetUserId });
         res.status(500).send('An error occurred while processing the dislike.');
     }
 };

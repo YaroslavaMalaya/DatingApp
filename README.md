@@ -1,4 +1,4 @@
-# DatingApp YAMA
+# Dating App YAMA
 
 YAMA is a social platform where users can find matches, like/dislike profiles, and chat with potential partners.
 This app is suitable for anyone who is looking for a partner, friends, friend with benefits, and just a good communication.
@@ -28,7 +28,7 @@ Run the following command to install all the dependencies listed in the `package
 3. Install the necessary Node.js packages: `npm instatll`
 4. Run the app: `npm start`
 
-## General description:
+## General description
 
 The server should be running on [http://localhost:8888](http://localhost:8888)
 

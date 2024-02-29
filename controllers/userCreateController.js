@@ -1,6 +1,7 @@
 const bcrypt = require('bcryptjs');
 const User = require('../models/user');
 const { upload } = require('../mongooseConnection');
+const logger = require('../configs/logging');
 
 // const photosarray = upload.array('userPhoto');
 exports.register = async (req, res) => {
@@ -11,6 +12,7 @@ exports.register = async (req, res) => {
 
         const existingUser = await User.findOne({ $or: [{ email }, { username }] });
         if (existingUser) {
+            logger.info(`Registration attempt with existing username/email: ${username}/${email}`);
             return res.redirect('/login');
         }
 
@@ -30,9 +32,10 @@ exports.register = async (req, res) => {
         user.dontdisplay.push(user._id);
         await user.save();
         req.session.userId = user._id;
+        logger.info(`New user registered: ${username}`);
         res.redirect('/register/upload');
     } catch (error) {
-        console.error('Registering the user failed.', error);
+        logger.error('Registering the user failed.', { error: error.toString(), username, email });
         res.redirect(`/register?error=${encodeURIComponent('Registration failed. Please try again.')}`);
     }
 };
@@ -50,9 +53,10 @@ exports.updateProfile = async (req, res) => {
             }
         }, { new: true, upsert: true });
 
+        logger.info(`User profile updated: ${req.session.userId}`);
         res.redirect('/register/upload/moreinfo');
     } catch (error) {
-        console.error('Error updating user profile:', error);
+        logger.error('Error updating user profile:', { error: error.toString(), userId: req.session.userId });
         res.redirect(`/register/upload/?error=${encodeURIComponent('An error occurred while ' +
             'updating your profile with new information. Please try again.')}`);
     }
@@ -73,10 +77,11 @@ exports.updateMoreInfo = async (req, res) => {
 
     try {
         await User.findByIdAndUpdate(req.session.userId, { $set: updateData }, { new: true, upsert: true });
+        logger.info(`User profile additional info updated: ${req.session.userId}`);
 
         res.redirect('/search');
     } catch (error) {
-        console.error('Error updating user profile with more info:', error);
+        logger.error('Error updating user profile with more info:', { error: error.toString(), userId: req.session.userId });
         res.redirect(`/register/upload/moreinfo?error=${encodeURIComponent('An error occurred while ' +
             'updating your profile with additional information. Please try again.')}`)
     }
