@@ -3,6 +3,14 @@
 YAMA is a social platform where users can find matches, like/dislike profiles, and chat with potential partners.
 This app is suitable for anyone who is looking for a partner, friends, friend with benefits, and just a good communication.
 
+## Features
+
+- User authentication and authorization
+- Profile creation and editing
+- Matching algorithm
+- Real-time chat
+- CORS support for enhanced security
+
 ## Setup
 
 To run the DatingApp on your local system, you will need to install several prerequisites and then set up the application. 
@@ -15,6 +23,8 @@ Before installing the application, make sure you have the following software ins
 - [Node.js](https://nodejs.org/) - The runtime environment for running JavaScript on the server.
 - [MongoDB](https://www.mongodb.com/) - The NoSQL database used for storing application data.
 - [Git](https://git-scm.com/) - Version control system for cloning the repository.
+- [Python](https://www.python.org/) - Programming language required for running the Django microservice.
+- [Django](https://www.djangoproject.com/) - The Python web framework used for the microservice.
 
 ### Install Node.js Modules
 
@@ -26,11 +36,12 @@ Run the following command to install all the dependencies listed in the `package
    git clone https://github.com/YaroslavaMalaya/DatingApp.git
 2. Navigate to the YAMA directory: `cd DatingApp`
 3. Install the necessary Node.js packages: `npm instatll`
-4. Run the app: `npm start`
+4. Run the app: `npm start-both`
 
 ## General description
 
 The server should be running on [http://localhost:8888](http://localhost:8888)
+The Django microservice will start on [http://localhost:8000](http://localhost:8000) by default.
 
 ### Structure
 
@@ -79,6 +90,7 @@ Here is an overview of the major packages and their roles within the application
 
 - `bcryptjs`: Utilized for hashing and salting user passwords before storing them in the database, providing security against password theft.
 - `busboy`: A streaming parser for HTML form data for Node.js, used for parsing form submissions with file uploads.
+- `cors`: Middleware that enables Cross-Origin Resource Sharing (CORS). It allows you to specify which domains can access your server resources, enhancing security and control over who can interact with your application.
 - `express`: The core web application framework that provides tools for routing, handling requests, and rendering views.
 - `express-session`: A session management middleware that allows you to manage user sessions with various storage capabilities.
 - `gridfs-stream`: A streaming file system for MongoDB using GridFS, allowing for storage and retrieval of large files such as images.
@@ -88,5 +100,3 @@ Here is an overview of the major packages and their roles within the application
 - `multer-gridfs-storage`: A GridFS storage engine for Multer to store uploaded files directly to MongoDB.
 - `pug`: A template engine for Node.js, designed to facilitate the creation of HTML templates with a clean and readable syntax.
 - `socket.io`: Enables real-time bidirectional event-based communication between web clients and servers, used for the chat feature in the application.
-
-
