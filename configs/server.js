@@ -1,11 +1,11 @@
 const http = require('http');
 const socketIO = require('socket.io');
-const socketConfig = require('./socket');
+const socketHandler = require('../handlers/socketHandler');
 
 module.exports = function (app) {
     const server = http.createServer(app);
     const io = socketIO(server);
-    socketConfig(io);
+    socketHandler(io);
 
     return server;
 };
