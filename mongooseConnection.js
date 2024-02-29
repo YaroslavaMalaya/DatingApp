@@ -18,15 +18,14 @@ const gfs = db.once('open', () => {
 const storage = new GridFsStorage({
     db: db,
     file: (req, file) => {
-        const fileInfo = {
+        return {
             filename: `photo_${Date.now()}_${file.originalname}`,
             bucketName: 'photos',
             metadata: { userId: req.session.userId }
         };
-        return fileInfo;
     }
 });
 
 const upload = multer({ storage });
 
-module.exports = { gfs, upload };
+module.exports = { gfs, upload, db };

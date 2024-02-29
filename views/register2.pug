@@ -16,7 +16,7 @@ html(lang="en")
             h2 Upload Your Photos And Add More Information
             if query.error
                 .error-message #{query.error}
-            form.register-form(action="/register/upload" method="POST" )
+            form.register-form(action="/register/upload" method="POST" enctype="multipart/form-data")
                 .form-group
                     label(for="country") Country:
                     select#country(name="country", required=true)
@@ -31,7 +31,7 @@ html(lang="en")
                         button.button(type="button" data-interest=interest) #{interest}
                 .form-group
                     label(for="userPhotos") Choose photo to upload (min - 1, max - 5):
-                    input#userPhotos(type="file", name="userPhotos", required=true)
+                    input#userPhotos(type="file", name="userPhotos", required=true, multiple)
                 .form-group
                     button.button(type="submit") Next
 
