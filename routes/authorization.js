@@ -5,8 +5,9 @@ const interestsArray = require('../public/scripts/allinterests');
 const { upload } = require('../mongooseConnection');
 const photosArray = upload.array('userPhotos', 5);
 
+router.get('/delete-account', userController.deleteUser);
 router.post('/register', userController.register);
-router.post('/register/upload', photosArray, userController.updateProfile);
+router.post('/register/upload', userController.updateProfile);
 router.post('/register/upload/moreinfo', userController.updateMoreInfo);
 
 router.get('/register', (req, res) => {

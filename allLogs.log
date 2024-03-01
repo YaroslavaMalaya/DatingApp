@@ -5,3 +5,27 @@
 {"level":"warn","message":"Login attempt failed for non-existing user: fffffff"}
 {"level":"info","message":"New user registered: brycehall"}
 {"level":"info","message":"New user registered: hallbryce"}
+{"level":"info","message":"New user registered: hello"}
+{"level":"info","message":"New user registered: please"}
+{"level":"info","message":"User logged in: 65de464f44a4f7e55c3f3d90"}
+{"level":"info","message":"User 65de464f44a4f7e55c3f3d90 searched for users."}
+{"level":"info","message":"User session destroyed successfully."}
+{"level":"info","message":"New user registered: maya"}
+{"level":"info","message":"User profile updated: 65e1bd8994a2dbbd3d5288be"}
+{"level":"info","message":"User profile additional info updated: 65e1bd8994a2dbbd3d5288be"}
+{"level":"info","message":"User 65e1bd8994a2dbbd3d5288be searched for users."}
+{"level":"info","message":"User 65e1bd8994a2dbbd3d5288be disliked user 65de46e044a4f7e55c3f3d97"}
+{"level":"info","message":"User 65e1bd8994a2dbbd3d5288be liked user 65de46e044a4f7e55c3f3d97"}
+{"level":"info","message":"User 65e1bd8994a2dbbd3d5288be liked user 65de4a2b44a4f7e55c3f3db8"}
+{"level":"info","message":"New user registered: vanyavangog"}
+{"level":"info","message":"New user registered: ellybelly"}
+{"level":"info","message":"User profile updated: 65e1bfcc72849db11e0f0d9d"}
+{"level":"info","message":"User profile additional info updated: 65e1bfcc72849db11e0f0d9d"}
+{"level":"info","message":"User 65e1bfcc72849db11e0f0d9d searched for users."}
+{"level":"info","message":"User logged in: 65de464f44a4f7e55c3f3d90"}
+{"level":"info","message":"User 65de464f44a4f7e55c3f3d90 searched for users."}
+{"level":"info","message":"New user registered: yasya"}
+{"level":"info","message":"User logged in: 65e1c13784090be0ae683464"}
+{"level":"info","message":"User 65e1c13784090be0ae683464 searched for users."}
+{"level":"info","message":"User 65e1c13784090be0ae683464 removed from database."}
+{"level":"info","message":"User session destroyed successfully."}
